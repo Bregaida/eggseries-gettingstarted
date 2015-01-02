@@ -69,6 +69,14 @@ angular.module('Eggly', [
     $scope.updateBookmark = updateBookmark;
     $scope.isEditingBookmark = isEditingBookmark;
 
+    function deleteBookmark(bookmark) {
+      _.remove($scope.bookmarks, function (b) {
+        return b.id === bookmark.id;
+      });
+    }
+
+    $scope.deleteBookmark = deleteBookmark;
+
     //---------------------------------------------------------
     // CREATING AND EDITING STATES
     //---------------------------------------------------------
