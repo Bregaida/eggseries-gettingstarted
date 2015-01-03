@@ -12,10 +12,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/eggly.css">
-    <link rel="stylesheet" href="styles/animations.css">
-    <link rel="stylesheet" href="styles/normalize.css">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <link rel="stylesheet" href="assets/styles/eggly.css">
+    <link rel="stylesheet" href="assets/styles/animations.css">
+    <link rel="stylesheet" href="assets/styles/normalize.css">
     <!-- endbuild -->
   </head>
   <body ng-controller="MainController">
@@ -27,7 +27,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
-          <a href="#" ng-click="setCurrentCategory(null)"><img class="logo" src="images/eggly-logo.png"></a>
+          <a href="#" ng-click="setCurrentCategory(null)"><img class="logo" src="assets/images/eggly-logo.png"></a>
           <ul class="nav nav-sidebar">
             <li ng-repeat="category in categories" ng-class="{active:isCurrentCategory(category)}">
               <a ng-click="setCurrentCategory(category)">{{category.name}}</a>
@@ -113,7 +113,13 @@
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/eggly-app.start.js"></script>
+        <script src="eggly-app.start.js"></script>
+        <script src="common/models/categories-model.js"></script>
+        <script src="common/models/bookmarks-model.js"></script>
+        <script src="categories/categories.js"></script>
+        <script src="categories/bookmarks/bookmarks.js"></script>
+        <script src="categories/bookmarks/create/bookmark-create.js"></script>
+        <script src="categories/bookmarks/edit/bookmark-edit.js"></script>
         <!-- endbuild -->
 </body>
 </html>
