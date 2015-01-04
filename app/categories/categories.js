@@ -25,3 +25,4 @@ angular.module('categories', [
   .controller('CategoriesController' , function($scope) {
 
   });
+;

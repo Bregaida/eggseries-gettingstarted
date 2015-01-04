@@ -7,6 +7,18 @@ angular.module('categories.bookmarks', [
   'categories.bookmarks.create',
   'categories.bookmarks.edit'
 ])
-  .controller('BookmarksController', function($scope) {
-
+  .config(function($stateProvider) {
+    $stateProvider
+      .state('eggly.categories.bookmarks', {
+        url: 'categories/:category',
+        views: {
+          'bookmarks@': {
+            templateUrl: 'categories/bookmarks/bookmarks.template.html',
+            controller: 'BookmarksController'
+          }
+        }
+      });
+  })
+  .controller('BookmarksController', function($scope, $stateParams) {
+    $scope.currentCategoryName = $stateParams.category;
   });
