@@ -10,7 +10,7 @@ angular.module('Eggly', [
     });
     $urlRouterProvider.otherwise('/');
   })
-  .controller('MainController', function($scope){
+  .controller('MainController', function($scope /*, $state*/){
     $scope.categories = [
       {"id": 0, "name": "Development"},
       {"id": 1, "name": "Design"},
@@ -124,6 +124,9 @@ angular.module('Eggly', [
 
       function setCurrentCategory(category) {
         $scope.currentCategory = category;
+
+//        $state.go('eggly.categories.bookmarks', {category:category.name});
+
         cancelCreating();
         cancelEditing();
       }
