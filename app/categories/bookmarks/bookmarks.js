@@ -14,11 +14,12 @@ angular.module('categories.bookmarks', [
         views: {
           'bookmarks@': {
             templateUrl: 'categories/bookmarks/bookmarks.template.html',
-            controller: 'BookmarksController'
+            controller: 'BookmarksController as bookmarks'
           }
         }
       });
   })
   .controller('BookmarksController', function($scope, $stateParams) {
-    $scope.currentCategoryName = $stateParams.category;
+    var bookmarks = this;
+    bookmarks.currentCategoryName = $stateParams.category;
   });
