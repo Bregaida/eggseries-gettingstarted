@@ -12,16 +12,17 @@ angular.module('categories', [
           'categories@': {
             url: '/',
             templateUrl: 'categories/categories.template.html',
-            controller: 'CategoriesController'
+            controller: 'CategoriesController as categoriesCtrl'
           },
           'bookmarks@': {
             url: '/',
             templateUrl: 'categories/bookmarks/bookmarks.template.html',
-            controller: 'BookmarksController'
+            controller: 'BookmarksController as bookmarksCtrl'
           }
         }
     });
   })
-  .controller('CategoriesController' , function($scope) {
-
+  .controller('CategoriesController' , function(CategoriesModel) {
+    var categoriesCtrl = this;
+    categoriesCtrl.categories = CategoriesModel.getCategories();
   });
