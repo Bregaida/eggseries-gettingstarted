@@ -8,8 +8,10 @@ angular.module('categories.bookmarks.edit', [
     var bookmarksEditCtrl = this;
     bookmarksEditCtrl.editedBookmark = angular.copy( _($scope.bookmarks).find({id : parseInt($stateParams.bookmark)}) );
 
-    function cancelEditing() {
-      $state.go('eggly.categories.bookmarks', { category: bookmarksEditCtrl.editedBookmark.category });
+    function resetEditing() {
+      var categoryName = bookmarksEditCtrl.editedBookmark.category;
+      bookmarksEditCtrl.editedBookmark = null;
+      $state.go('eggly.categories.bookmarks', { category: categoryName });
     }
 
     function updateBookmark(bookmark) {
@@ -18,11 +20,9 @@ angular.module('categories.bookmarks.edit', [
       });
       $scope.bookmarks[index] = bookmark;
 
-      $state.go('eggly.categories.bookmarks', { category: bookmarksEditCtrl.editedBookmark.category });
-
-      bookmarksEditCtrl.editedBookmark = null;
+      resetEditing();
     }
 
     bookmarksEditCtrl.updateBookmark = updateBookmark;
-    bookmarksEditCtrl.cancelEditing = cancelEditing;
+    bookmarksEditCtrl.cancelEditing = resetEditing;
   });

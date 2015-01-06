@@ -1,11 +1,11 @@
 <h1>{{bookmarksCtrl.currentCategoryName}}</h1>
-<div ng-class="{ active:isEditingBookmark(bookmark.id) }" ng-repeat="bookmark in bookmarksCtrl.bookmarks | filter:{ category: bookmarksCtrl.currentCategory.name }">
-  <button type="button" ng-click="deleteBookmark(bookmark)" class="close">&times;</button>
+<div ng-class="{ active: bookmarksCtrl.isEditingBookmark(bookmark.id) }" ng-repeat="bookmark in bookmarksCtrl.bookmarks | filter:{ category: bookmarksCtrl.currentCategory.name }">
+  <button type="button" ng-click="bookmarksCtrl.deleteBookmark(bookmark)" class="close">&times;</button>
   <button type="button" ng-click="bookmarksCtrl.setIsCreatingOrEditing()" ui-sref="eggly.categories.bookmarks.edit({bookmark:bookmark.id})" class="btn btn-link"><span class="glyphicon glyphicon-pencil"></span></button>
   <a ng-href="{{bookmark.url}}" target="_blank">{{bookmark.title}}</a>
 </div>
 <hr/>
-<button type="button" class="btn btn-link" ui-sref="eggly.categories.bookmarks.create()" ng-hide="bookmarksCtrl.isCreatingOrEditing" ng-click="bookmarksCtrl.setIsCreatingOrEditing()">
+<button type="button" class="btn btn-link" ui-sref="eggly.categories.bookmarks.create({category:bookmarksCtrl.currentCategory.name})" ng-hide="bookmarksCtrl.isCreatingOrEditing" ng-click="bookmarksCtrl.setIsCreatingOrEditing()">
   <span class="glyphicon glyphicon-plus"></span>
   Create Bookmark
 </button>

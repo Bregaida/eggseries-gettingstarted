@@ -1,12 +1,12 @@
-<form class="create-form" name="createBookmarkForm" role="form" ng-submit="createBookmark(newBookmark)" novalidate>
+<form class="create-form" name="createBookmarkForm" role="form" ng-submit="bookmarksCreateCtrl.createBookmark(bookmarksCreateCtrl.newBookmark)" novalidate>
   <div class="form-group">
     <label for="newBookmarkTitle">Bookmark tittle</label>
-    <input type="text" class="form-control" id="newBookmarkTitle" ng-model="newBookmark.title" placeholder="Enter title" required>
+    <input type="text" class="form-control" id="newBookmarkTitle" ng-model="bookmarksCreateCtrl.newBookmark.title" placeholder="Enter title" required>
   </div>
   <div class="form-group">
     <label for="newBookmarkUrl">Bookmark URL</label>
-    <input type="text" class="form-control" id="newBookmarkUrl" ng-model="newBookmark.url" placeholder="Enter URL" required>
+    <input type="text" class="form-control" id="newBookmarkUrl" ng-model="bookmarksCreateCtrl.newBookmark.url" placeholder="Enter URL" required>
   </div>
   <button type="submit" class="btn btn-info btn-lg" ng-disabled="!createBookmarkForm.$valid">Create</button>
-  <button type="button" class="btn btn-default btn-lg pull-right" ng-click="cancelCreating()">Cancel</button>
+  <button type="button" class="btn btn-default btn-lg pull-right" ng-click="bookmarksCreateCtrl.resetCreating()">Cancel</button>
 </form>

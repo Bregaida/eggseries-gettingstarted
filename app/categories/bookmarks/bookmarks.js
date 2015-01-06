@@ -28,11 +28,11 @@ angular.module('categories.bookmarks', [
         }
       })
       .state('eggly.categories.bookmarks.create', {
-        url: 'categories/bookmarks/create',
+        url: 'categories/bookmarks/create/:category',
         views: {
           'bookmarks-create': {
             templateUrl: 'categories/bookmarks/create/bookmark-create.template.html',
-            controller: 'BookmarksCreateController as bookmarkCreateCtrl'
+            controller: 'BookmarksCreateController as bookmarksCreateCtrl'
           }
         }
       });
@@ -43,6 +43,17 @@ angular.module('categories.bookmarks', [
     bookmarksCtrl.bookmarks = BookmarksModel.getBookmarks();
     bookmarksCtrl.currentCategory = _(bookmarksCtrl.categories).find( { name: $stateParams.category } );
     bookmarksCtrl.isCreatingOrEditing = false;
+
+    //---------------------------------------------------------
+    // CRUD
+    //---------------------------------------------------------
+    function deleteBookmark(bookmark) {
+      _.remove($scope.bookmarks, function (b) {
+        return b.id === bookmark.id;
+      });
+    }
+
+    bookmarksCtrl.deleteBookmark = deleteBookmark;
 
     function setIsCreatingOrEditing() {
       bookmarksCtrl.isCreatingOrEditing = true;
